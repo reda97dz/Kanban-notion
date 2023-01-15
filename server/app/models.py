@@ -30,14 +30,14 @@ class Card(db.Model):
     position = db.Column(db.Integer)
     due_date = db.Column(db.DateTime)
 
-class Comment(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    card_id = db.Column(db.Integer, db.ForeignKey('card.id'))
-    content = db.Column(db.Text)
-    created_at = db.Column(db.DateTime)
+# class Comment(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     card_id = db.Column(db.Integer, db.ForeignKey('card.id'))
+#     content = db.Column(db.Text)
+#     created_at = db.Column(db.DateTime)
 
-class Label(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    card_id = db.Column(db.Integer, db.ForeignKey('card.id'))
-    name = db.Column(db.String(255))
-    color = db.Column(db.String(255))
+# class Label(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     card_id = db.Column(db.Integer, db.ForeignKey('card.id'))
+#     name = db.Column(db.String(255))
+#     color = db.Column(db.String(255))
