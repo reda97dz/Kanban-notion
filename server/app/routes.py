@@ -1,14 +1,17 @@
 from app import app, db
 from app.models import *
 from flask import request, jsonify
+from flask_cors import cross_origin
 
 @app.route("/")
+@cross_origin()
 def hello_world():
     return "<p>Hello, World!</p>"
 
 # BOARDS
 
 @app.route('/boards', methods=["GET", "POST"])
+@cross_origin()
 def boards():
     if request.method == 'GET':
         boards = Board.query.all()
@@ -21,6 +24,7 @@ def boards():
         return jsonify(board.serialize())
 
 @app.route('/boards/<int:board_id>', methods=['GET', 'PUT', 'DELETE'])
+@cross_origin()
 def board(board_id):
     board = Board.query.get(board_id)
     if request.method == 'GET':
@@ -40,6 +44,7 @@ def board(board_id):
 # LISTS
 
 @app.route('/lists', methods=['GET', 'POST'])
+@cross_origin()
 def lists():
     if request.method == 'GET':
         lists = List.query.all()
@@ -55,6 +60,7 @@ def lists():
         return jsonify(list.serialize())
 
 @app.route('/lists/<int:list_id>', methods=['GET', 'PUT', 'DELETE'])
+@cross_origin()
 def list(list_id):
     list = List.query.get(list_id)
     if request.method == "GET":
@@ -74,6 +80,7 @@ def list(list_id):
 # CARD
 
 @app.route('/cards', methods=['GET', 'POST'])
+@cross_origin()
 def cards():
     if request.method == 'GET':
         cards = Card.query.all()
@@ -92,6 +99,7 @@ def cards():
         return jsonify(card.serialize())
 
 @app.route('/cards/<int:card_id>', methods=['GET', 'PUT', 'DELETE'])
+@cross_origin()
 def card(card_id):
     card = Card.query.get(card_id)
     if request.method == "GET":

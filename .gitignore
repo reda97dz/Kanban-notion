@@ -1,4 +1,5 @@
 server/flask
+*.pyc
 # Logs
 logs
 *.log
