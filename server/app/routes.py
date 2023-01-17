@@ -2,6 +2,8 @@ from app import app, db
 from app.models import *
 from flask import request, jsonify
 from flask_cors import cross_origin
+from datetime import datetime
+
 
 @app.route("/")
 @cross_origin()
@@ -28,13 +30,13 @@ def boards():
 def board(board_id):
     board = Board.query.get(board_id)
     if request.method == 'GET':
-        return jsonify(board.serialize())
+        return jsonify(board.serialize(with_lists=True))
     elif request.method == 'PUT':
         data = request.get_json()
         board.name = data['name']
         board.description = data['description']
         db.session.commit()
-        return jsonify(board.serialize())
+        return jsonify(board.serialize(with_lists=True))
     else:
         db.session.delete(board)
         db.session.commit()
@@ -48,13 +50,15 @@ def board(board_id):
 def lists():
     if request.method == 'GET':
         lists = List.query.all()
-        return jsonify([list.serialize() for list in lists])
+        return jsonify([list.serialize(with_cards=True) for list in lists])
     else:
         data = request.get_json()
+        
         list = List(
             name=data['name'], 
             position=data['position'], 
             board_id=data['board_id'])
+        
         db.session.add(list)
         db.session.commit()
         return jsonify(list.serialize())
@@ -64,14 +68,14 @@ def lists():
 def list(list_id):
     list = List.query.get(list_id)
     if request.method == "GET":
-        return jsonify(list.serialize())
+        return jsonify(list.serialize(with_cards=True))
     elif request.method == 'PUT':
         data = request.get_json()
         list.name = data['name']
         list.position = data['position']
         list.board_id = data['board_id']
         db.session.commit()
-        return jsonify(list.serialize())
+        return jsonify(list.serialize(with_cards=True))
     else:
         db.session.delete(list)
         db.session.commit()
@@ -92,7 +96,7 @@ def cards():
             name=data['name'], 
             position=data['position'], 
             description=data['description'],
-            due_date=data['due_date'], 
+            due_date=datetime.strptime(data['due_date'], '%Y-%m-%d %H:%M:%S'), 
             )
         db.session.add(card)
         db.session.commit()
@@ -109,11 +113,11 @@ def card(card_id):
         card.list_id = data['list_id']
         card.name = data['name']
         card.description = data['description']
-        card.due_date = data['due_date']
+        card.due_date = card.serialize()["due_date"]
         card.position = data['position']
         db.session.commit()
         return jsonify(card.serialize())
     else:
         db.session.delete(card)
         db.session.commit()
-        return jsonify({'message': 'Card deleted'})
+        return jsonify({'id': card_id})
