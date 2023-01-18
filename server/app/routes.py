@@ -79,7 +79,7 @@ def list(list_id):
     else:
         db.session.delete(list)
         db.session.commit()
-        return jsonify({'message': 'List deleted'})
+        return jsonify({'id': list_id})
 
 # CARD
 

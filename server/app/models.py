@@ -17,7 +17,7 @@ class Board(db.Model):
             'description': self.description,
         }
         if(with_lists): board.update({
-            'lists': [list.serialize() for list in self.lists]})
+            'lists': [list.serialize(with_cards=True) for list in self.lists]})
         return board
         
     def serialize_without_lists():
