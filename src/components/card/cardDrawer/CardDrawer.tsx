@@ -41,8 +41,8 @@ export default function CardDrawer(props: CardDrawerProps) {
   const [cardDescValue, setCardDescValue] = useState(cardDesc);
 
   useDidUpdate(() => {
-    setCardNameValue(cardName)
-  }, [cardName])
+    setCardNameValue(cardName);
+  }, [cardName]);
 
   return (
     <Drawer

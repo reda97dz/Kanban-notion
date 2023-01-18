@@ -3,14 +3,7 @@ import useBoards from "./hooks/useBoards";
 import { useDidUpdate } from "@mantine/hooks";
 import Board from "./components/board/Board";
 import { Switch } from "@mantine/core";
-
-export const CardNotesContext = createContext<{
-  show: boolean;
-  toggle: Function;
-}>({
-  show: false,
-  toggle: () => {},
-});
+import { CardNotesContext } from "./context/CardNotesContext";
 
 export default function App() {
   const [show, setShow] = useState<boolean>(false);

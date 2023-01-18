@@ -14,7 +14,7 @@ export default function NewCardContent(props: NewCardProps) {
   const { cardName, setCardName, setIsNewCard } = props;
   const [cardNameValue, setCardNameValue] = useState(cardName);
 
-  const { classes } = useStyles()
+  const { classes } = useStyles();
   return (
     <Input
       autoFocus
@@ -28,8 +28,8 @@ export default function NewCardContent(props: NewCardProps) {
         }
         if (e.key === "Enter") {
           e.preventDefault();
-          setCardName(cardNameValue)
-          setCardNameValue(e.currentTarget.value)
+          setCardName(cardNameValue);
+          setCardNameValue(e.currentTarget.value);
         }
       }}
       onClick={(e) => e.stopPropagation()}

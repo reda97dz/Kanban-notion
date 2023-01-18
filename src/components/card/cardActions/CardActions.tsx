@@ -50,7 +50,7 @@ export default function CardActions(props: CardActionsProps) {
           }}
           onClick={(e) => {
             e.stopPropagation();
-            deleteCard()
+            deleteCard();
           }}
         >
           <IconTrashX size={16} />

@@ -12,7 +12,7 @@ interface AddBoardListProps {
 
 export default function AddBoardList(props: AddBoardListProps) {
   const { opened, setOpened, newListName, setNewListName, onAddList } = props;
-  const {classes} = useStyles()
+  const { classes } = useStyles();
   return (
     <Menu
       shadow="lg"
@@ -20,7 +20,7 @@ export default function AddBoardList(props: AddBoardListProps) {
       onChange={setOpened}
       offset={1}
       classNames={{
-        dropdown: classes.dropdown
+        dropdown: classes.dropdown,
       }}
     >
       <Menu.Target>
@@ -29,7 +29,7 @@ export default function AddBoardList(props: AddBoardListProps) {
           color="gray.6"
           variant="subtle"
           classNames={{
-            root: classes.actionIcon
+            root: classes.actionIcon,
           }}
         >
           <IconPlus size={20} />
@@ -40,7 +40,7 @@ export default function AddBoardList(props: AddBoardListProps) {
           placeholder="List name"
           classNames={{
             wrapper: classes.inputWrapper,
-            input: classes.inputStyle
+            input: classes.inputStyle,
           }}
           value={newListName}
           onChange={(e) => setNewListName(e.target.value)}

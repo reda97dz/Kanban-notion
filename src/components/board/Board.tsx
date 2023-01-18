@@ -26,14 +26,14 @@ export default function Board(props: BoardProps) {
       setBoardLists((prev) => [...prev, { ...data, cards: [] }]);
       setNewLists([]);
     }
-    if(data && Object.keys(data).length === 1){
-      setBoardLists((prev) => prev.filter(l => l.id !== data.id))
+    if (data && Object.keys(data).length === 1) {
+      setBoardLists((prev) => prev.filter((l) => l.id !== data.id));
     }
   }, [data]);
 
   const removeListFromBoard = (listId: number) => {
-    removeList(listId)
-  }
+    removeList(listId);
+  };
 
   const onAddList = () => {
     const newList: List = {
@@ -54,7 +54,11 @@ export default function Board(props: BoardProps) {
       <Space h="md" />
       <Group grow className={classes.listContainer}>
         {boardLists.map((l) => (
-          <List list={l} cards={l.cards} removeListFromBoard={removeListFromBoard} />
+          <List
+            list={l}
+            cards={l.cards}
+            removeListFromBoard={removeListFromBoard}
+          />
         ))}
         {newLists.map((l) => (
           <List list={l} cards={[]} />

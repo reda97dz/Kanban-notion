@@ -10,8 +10,8 @@ export const useStyles = createStyles((theme) => ({
     fontSize: 30,
     fontWeight: "bold",
     "::placeholder": {
-        color: theme.colors.gray[3]
-    }
+      color: theme.colors.gray[3],
+    },
   },
 
   textAreaRoot: {

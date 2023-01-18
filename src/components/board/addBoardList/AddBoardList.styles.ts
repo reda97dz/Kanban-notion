@@ -6,7 +6,7 @@ export const useStyles = createStyles((theme) => ({
     maxWidth: "150px",
   },
   actionIcon: {
-    width: "10px"
+    width: "10px",
   },
 
   inputWrapper: {

@@ -68,7 +68,7 @@ export default function List(props: ListProps) {
         setListName={setListName}
         length={listCards.length}
         removeListFromBoard={() => {
-          if (removeListFromBoard && list.id) removeListFromBoard(list.id)
+          if (removeListFromBoard && list.id) removeListFromBoard(list.id);
         }}
       />
       {listCards.map((card) => (
