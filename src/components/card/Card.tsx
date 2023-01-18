@@ -13,7 +13,7 @@ import CardDrawer from "./cardDrawer/CardDrawer";
 import useCards from "../../hooks/useCards";
 import NewCardContent from "./newCardContent/NewCardContent";
 import CardActions from "./cardActions/CardActions";
-import { CardNotesContext } from "../../App";
+import { CardNotesContext } from "../../context/CardNotesContext"; 
 
 export interface CardProps {
   card: Card;
