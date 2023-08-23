@@ -1,4 +1,4 @@
-# Exercice 2: Kanban
+# Kanban
 
 ## Instruction to run after cloning the repo
 
