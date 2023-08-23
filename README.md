@@ -1,5 +1,7 @@
 # Kanban
 
+Simple project as part of a take-home coding assignment for a job application
+
 ## Instruction to run after cloning the repo
 
 ### Run flask api:
